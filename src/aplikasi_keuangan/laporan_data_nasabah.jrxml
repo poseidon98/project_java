@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="80f17f4b-7c6a-45dd-a3e7-357cfd91398d">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     data_nasabah.`id` AS data_nasabah_id,
+     data_nasabah.`nama_nasabah` AS data_nasabah_nama_nasabah,
+     data_nasabah.`nama_cicilan` AS data_nasabah_nama_cicilan,
+     data_nasabah.`total_cicilan` AS data_nasabah_total_cicilan,
+     data_nasabah.`banyak_cicilan` AS data_nasabah_banyak_cicilan,
+     data_nasabah.`cicilan_perbulan` AS data_nasabah_cicilan_perbulan,
+     data_nasabah.`ket` AS data_nasabah_ket
+FROM
+     `data_nasabah` data_nasabah]]>
+	</queryString>
+	<field name="data_nasabah_id" class="java.lang.String"/>
+	<field name="data_nasabah_nama_nasabah" class="java.lang.String"/>
+	<field name="data_nasabah_nama_cicilan" class="java.lang.String"/>
+	<field name="data_nasabah_total_cicilan" class="java.lang.Integer"/>
+	<field name="data_nasabah_banyak_cicilan" class="java.lang.Integer"/>
+	<field name="data_nasabah_cicilan_perbulan" class="java.lang.Integer"/>
+	<field name="data_nasabah_ket" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="70" splitType="Stretch">
+			<image>
+				<reportElement x="275" y="0" width="300" height="64" uuid="4f62e42a-3ee1-4a44-99bf-81b8ee76e1b0"/>
+				<imageExpression><![CDATA["leaf_banner_gray.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="Title" x="0" y="13" width="263" height="33" uuid="1367576b-56ed-441a-b11c-511c8bf48e77"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Laporan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="117" y="46" width="157" height="22" uuid="f731c574-b2fe-4d2e-8b75-5eec92927bb4"/>
+				<text><![CDATA[List Nasabah]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="35" width="555" height="1" uuid="0c8ea217-236e-44f8-a66c-75a198e4b0c0"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="19" width="79" height="15" uuid="413efbc4-13de-4f4b-8769-73ad7dbda06f"/>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="79" y="19" width="79" height="15" uuid="2ef16ee4-60b0-40fc-b2df-9fa70b3e5bbe"/>
+				<text><![CDATA[Nama]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="158" y="19" width="79" height="15" uuid="b0a1edaf-cf88-457f-9ce8-f3dc52bed1a9"/>
+				<text><![CDATA[Nama Cicilan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="237" y="19" width="79" height="15" uuid="312b6f6d-68a0-4a53-b991-9c136dadb97a"/>
+				<text><![CDATA[Total Cicilan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="316" y="19" width="79" height="15" uuid="16458ecd-ec93-46b5-8a4b-f63c8f17f55a"/>
+				<text><![CDATA[Bnyk Cicilan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="395" y="19" width="79" height="15" uuid="81b55f1c-c062-4c5b-b16f-e63733f5ea71"/>
+				<text><![CDATA[Cicilan Bulanan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="474" y="19" width="79" height="15" uuid="55bcbcfe-7d5c-42bf-bc24-7861681626f6"/>
+				<text><![CDATA[Ket]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1" uuid="f2d3ab20-8f25-4285-a45e-d39efb284ab6"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement style="Detail" x="0" y="0" width="79" height="15" uuid="8f79038f-ce46-44f6-9a43-8f0d53bf7ef8"/>
+				<textFieldExpression><![CDATA[$F{data_nasabah_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="79" y="0" width="79" height="15" uuid="2b65ba2d-8b88-45ac-aa87-3223fa7108a8"/>
+				<textFieldExpression><![CDATA[$F{data_nasabah_nama_nasabah}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="158" y="0" width="79" height="15" uuid="805fd96a-1ae3-418f-8359-f70fb2a36318"/>
+				<textFieldExpression><![CDATA[$F{data_nasabah_nama_cicilan}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement style="Detail" x="237" y="0" width="79" height="15" uuid="729d02f3-298f-4f9a-afde-f3dd818d7375"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{data_nasabah_total_cicilan}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="316" y="0" width="79" height="15" uuid="b26a1b9b-8e8d-47a4-afb1-fe8b96e8938f"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{data_nasabah_banyak_cicilan}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement style="Detail" x="395" y="0" width="79" height="15" uuid="d8a61d27-5512-4ac5-950a-f0462179815d"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{data_nasabah_cicilan_perbulan}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="474" y="0" width="79" height="15" uuid="5e51ddd1-1b26-4171-9d57-9051e0314159"/>
+				<textFieldExpression><![CDATA[$F{data_nasabah_ket}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="a2831fe7-442a-4ea4-a1bd-c31aa786ea15"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="Column header" x="433" y="0" width="80" height="20" uuid="be4eeeb9-cd42-4fec-981d-71ed7c84ec62"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="513" y="0" width="40" height="20" uuid="1c142539-a826-4243-90ec-c97b613f34e6"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="0" y="0" width="197" height="20" uuid="ccc6b24b-02e6-4724-958c-018bd95774b0"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

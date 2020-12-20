@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="76a826ee-ecb0-4211-9bb2-a8c2bd7693c7">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<parameter name="pbulan" class="java.lang.String"/>
+	<parameter name="ptahun" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     arus_kas.`id_kas` AS arus_kas_id_kas,
+     arus_kas.`tanggal` AS arus_kas_tanggal,
+     arus_kas.`nama_arus` AS arus_kas_nama_arus,
+     arus_kas.`jenis` AS arus_kas_jenis,
+     arus_kas.`nominal` AS arus_kas_nominal
+FROM
+     `arus_kas` arus_kas
+where
+month(tanggal)=$P{pbulan}
+and year(tanggal)=$P{ptahun}
+order by arus_kas.`tanggal`]]>
+	</queryString>
+	<field name="arus_kas_id_kas" class="java.lang.String"/>
+	<field name="arus_kas_tanggal" class="java.sql.Date"/>
+	<field name="arus_kas_nama_arus" class="java.lang.String"/>
+	<field name="arus_kas_jenis" class="java.lang.String"/>
+	<field name="arus_kas_nominal" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="166" splitType="Stretch">
+			<image>
+				<reportElement x="275" y="0" width="300" height="64" uuid="9e622c2e-2d3a-4f6f-bfe4-7acd6f8e34bd"/>
+				<imageExpression><![CDATA["leaf_banner_gray.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="Title" x="0" y="13" width="263" height="33" uuid="f0f10ac9-02b1-4e96-8a5f-81d948fdeece"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Laporan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="117" y="46" width="157" height="22" uuid="9ad032bf-e4c0-4c72-8190-39beca9db14c"/>
+				<text><![CDATA[Arus Kas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="14" y="126" width="38" height="20" uuid="6bbaec28-a435-43d2-b715-1e39f6b12490"/>
+				<text><![CDATA[Bulan :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="14" y="146" width="38" height="20" uuid="d54ceccb-d7f5-448c-83f1-2430167522c1"/>
+				<text><![CDATA[Tahun :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="52" y="146" width="100" height="20" uuid="71e72885-08f2-4fa2-8ab2-f11c2840e2c5"/>
+				<textFieldExpression><![CDATA[$P{ptahun}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="52" y="126" width="100" height="20" uuid="ea8df5ee-e3f4-455a-92ff-88333e56d80a"/>
+				<textFieldExpression><![CDATA[$P{pbulan}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd-MM-yyyy">
+				<reportElement style="Column header" x="358" y="146" width="197" height="20" uuid="ffea5fa4-6e8a-4a69-a80e-abda36d5488f"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="35" width="555" height="1" uuid="e7a8efb9-1cb2-4d5a-87ae-545fa1e09fe6"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="19" width="111" height="15" uuid="627369e2-75eb-4549-a3b6-3ef743b0d142"/>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="111" y="19" width="111" height="15" uuid="d5bf3f52-0ee4-4d42-96d8-300d1754e502"/>
+				<text><![CDATA[Tanggal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="222" y="19" width="111" height="15" uuid="1641c002-642c-454c-bab3-c51d14c58400"/>
+				<text><![CDATA[Keterangan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="333" y="19" width="111" height="15" uuid="dadf6dab-2611-4c76-a4c4-1224a388bdbd"/>
+				<text><![CDATA[Jenis]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="444" y="19" width="111" height="15" uuid="cfb1cf8e-e5b6-4b0d-b525-faa2f8b06473"/>
+				<text><![CDATA[Nominal]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1" uuid="e36fea77-2f59-44f5-b187-787da2bb6199"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement style="Detail" x="0" y="0" width="111" height="15" uuid="7a31a98a-4626-44b7-ad23-f6e03c07bd6c"/>
+				<textFieldExpression><![CDATA[$F{arus_kas_id_kas}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement style="Detail" x="111" y="0" width="111" height="15" uuid="3f49a9dc-b990-48a8-919a-4f88359be5ed"/>
+				<textFieldExpression><![CDATA[$F{arus_kas_tanggal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="222" y="0" width="111" height="15" uuid="3ac5ac5d-a8ca-4b2c-b948-0989515812a7"/>
+				<textFieldExpression><![CDATA[$F{arus_kas_nama_arus}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="333" y="0" width="111" height="15" uuid="ba6ed2d9-f7e1-4463-99ac-a84b88eb650b"/>
+				<textFieldExpression><![CDATA[$F{arus_kas_jenis}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement style="Detail" x="444" y="0" width="111" height="15" uuid="d51b1705-ddce-4266-9230-b5d3baba2fcc"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{arus_kas_nominal}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="dd834c4d-556c-4757-802b-6a8936d8c009"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="Column header" x="433" y="0" width="80" height="20" uuid="9e1a6a55-0c0c-4f8a-9632-4fa62fedc68e"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="513" y="0" width="40" height="20" uuid="fec2e210-fced-4797-a19c-968b339ca52e"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7df06cfd-7e1d-419c-b597-405119dbed51">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<parameter name="pbulan" class="java.lang.String"/>
+	<parameter name="ptahun" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     cicilan.`id_cicilan` AS cicilan_id_cicilan,
+     cicilan.`tanggal` AS cicilan_tanggal,
+     cicilan.`nama_nasabah` AS cicilan_nama_nasabah,
+     cicilan.`nama_cicilan` AS cicilan_nama_cicilan,
+     cicilan.`banyak_cicilan` AS cicilan_banyak_cicilan,
+     cicilan.`cicilan_perbulan` AS cicilan_cicilan_perbulan,
+     cicilan.`ket` AS cicilan_ket
+FROM
+     `cicilan` cicilan
+where
+month(tanggal)=$P{pbulan}
+and year(tanggal)=$P{ptahun}
+order by cicilan.`tanggal`]]>
+	</queryString>
+	<field name="cicilan_id_cicilan" class="java.lang.String"/>
+	<field name="cicilan_tanggal" class="java.sql.Date"/>
+	<field name="cicilan_nama_nasabah" class="java.lang.String"/>
+	<field name="cicilan_nama_cicilan" class="java.lang.String"/>
+	<field name="cicilan_banyak_cicilan" class="java.lang.Integer"/>
+	<field name="cicilan_cicilan_perbulan" class="java.lang.Integer"/>
+	<field name="cicilan_ket" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="135" splitType="Stretch">
+			<image>
+				<reportElement x="275" y="0" width="300" height="64" uuid="6700125f-ea76-4291-81e5-cdbb8f27c795"/>
+				<imageExpression><![CDATA["leaf_banner_gray.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="Title" x="0" y="13" width="263" height="33" uuid="c4ae4084-2c79-4823-949a-57438d8a3e40"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Laporan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="117" y="46" width="157" height="22" uuid="12c658cb-b8cf-405f-834b-761892a714a9"/>
+				<text><![CDATA[Cicilan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="114" width="38" height="20" uuid="430882c8-424e-4049-9acb-ec4ed5329f12"/>
+				<text><![CDATA[Tahun :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="94" width="38" height="20" uuid="12fe2031-cacb-4336-8493-f3e46de76724"/>
+				<text><![CDATA[Bulan :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="38" y="94" width="100" height="20" uuid="cba9382a-e9d1-43d1-9895-70034cbe074f"/>
+				<textFieldExpression><![CDATA[$P{pbulan}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="38" y="115" width="100" height="20" uuid="b636541f-97d7-4943-bf88-2a51bc70a948"/>
+				<textFieldExpression><![CDATA[$P{ptahun}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd-MM-yyyy">
+				<reportElement style="Column header" x="356" y="114" width="197" height="20" uuid="c423ce65-ec1f-41d7-afbc-d275f8b7a527"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="35" width="555" height="1" uuid="ef123095-7a0f-4afc-939a-d165f3a81790"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="19" width="79" height="15" uuid="f70d89cb-433e-4cb9-a7cc-4f436d3c5766"/>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="79" y="19" width="79" height="15" uuid="3b7e2ec5-b37d-4a13-8deb-78bbf554af04"/>
+				<text><![CDATA[Tanggal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="158" y="19" width="79" height="15" uuid="5ffd3f4f-06b8-434f-8ef5-275b9990cb1a"/>
+				<text><![CDATA[Nama]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="237" y="19" width="79" height="15" uuid="0a6d54cf-ec6f-4906-85c4-f4d82771b31c"/>
+				<text><![CDATA[Nama Cicilan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="316" y="19" width="79" height="15" uuid="263ad4b8-371f-4189-9a91-8d6a77e610a5"/>
+				<text><![CDATA[Bnyk Cicilan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="395" y="19" width="79" height="15" uuid="e913c6d6-0f1e-406e-94c1-f894b25af456"/>
+				<text><![CDATA[Cicilan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="474" y="19" width="79" height="15" uuid="36a83b11-72b9-43a8-a413-2d39fce4502c"/>
+				<text><![CDATA[Ket]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1" uuid="2deb972e-e053-48ad-9705-ab2106537d29"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement style="Detail" x="0" y="0" width="79" height="15" uuid="d3224a3f-6bee-4284-aa9d-72ba9cfc91b9"/>
+				<textFieldExpression><![CDATA[$F{cicilan_id_cicilan}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement style="Detail" x="79" y="0" width="79" height="15" uuid="e981bffe-7650-48c0-8622-276c9e8a950f"/>
+				<textFieldExpression><![CDATA[$F{cicilan_tanggal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="158" y="0" width="79" height="15" uuid="21e5305c-bbf1-4a20-af46-52934771cf24"/>
+				<textFieldExpression><![CDATA[$F{cicilan_nama_nasabah}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="237" y="0" width="79" height="15" uuid="e9ebff1b-6520-4548-a2bf-b4d937b3f4ce"/>
+				<textFieldExpression><![CDATA[$F{cicilan_nama_cicilan}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="316" y="0" width="79" height="15" uuid="a047e3a5-9198-4040-a650-b95b47e3b649"/>
+				<textFieldExpression><![CDATA[$F{cicilan_banyak_cicilan}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement style="Detail" x="395" y="0" width="79" height="15" uuid="4ea39a04-5760-4ebf-8bd8-90da55ce8adc"/>
+				<textFieldExpression><![CDATA[$F{cicilan_cicilan_perbulan}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="474" y="0" width="79" height="15" uuid="0670f3bb-a0c1-4265-9923-1958cbc0b9d6"/>
+				<textFieldExpression><![CDATA[$F{cicilan_ket}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="e2e23433-2ae9-41a5-ab42-29ce2a49a797"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="Column header" x="433" y="0" width="80" height="20" uuid="50aa09d0-50c5-469c-a9b0-f54ca6413f5a"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="513" y="0" width="40" height="20" uuid="4c6200b0-3c16-4e25-af5d-3ccf4495c85e"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

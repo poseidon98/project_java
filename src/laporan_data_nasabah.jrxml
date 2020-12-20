@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4b96d605-8745-403e-b833-bcd4033e4881">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     data_nasabah.`id` AS data_nasabah_id,
+     data_nasabah.`nama_nasabah` AS data_nasabah_nama_nasabah,
+     data_nasabah.`nama_cicilan` AS data_nasabah_nama_cicilan,
+     data_nasabah.`total_cicilan` AS data_nasabah_total_cicilan,
+     data_nasabah.`banyak_cicilan` AS data_nasabah_banyak_cicilan,
+     data_nasabah.`cicilan_perbulan` AS data_nasabah_cicilan_perbulan,
+     data_nasabah.`ket` AS data_nasabah_ket
+FROM
+     `data_nasabah` data_nasabah]]>
+	</queryString>
+	<field name="data_nasabah_id" class="java.lang.String"/>
+	<field name="data_nasabah_nama_nasabah" class="java.lang.String"/>
+	<field name="data_nasabah_nama_cicilan" class="java.lang.String"/>
+	<field name="data_nasabah_total_cicilan" class="java.lang.Integer"/>
+	<field name="data_nasabah_banyak_cicilan" class="java.lang.Integer"/>
+	<field name="data_nasabah_cicilan_perbulan" class="java.lang.Integer"/>
+	<field name="data_nasabah_ket" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="124" splitType="Stretch">
+			<image>
+				<reportElement x="275" y="0" width="300" height="64" uuid="a8909114-5f1e-405a-86c4-575adc03a4a0"/>
+				<imageExpression><![CDATA["leaf_banner_gray.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="Title" x="0" y="13" width="263" height="33" uuid="82fb1d20-d523-463b-a28a-11f9dab85ad9"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Leaf Gray Title]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="117" y="46" width="157" height="22" uuid="e411f2c8-f7b5-4472-bfa7-0de50bf88acc"/>
+				<text><![CDATA[Leaf Gray SubTitle]]></text>
+			</staticText>
+			<textField pattern="dd-MM-yyyy">
+				<reportElement style="Column header" x="358" y="104" width="197" height="20" uuid="d959b4c0-25fe-45b9-b47e-9ec65fbafdaa"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="35" width="555" height="1" uuid="7df5bca8-93fa-4797-aed8-c51a496eb56d"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="19" width="39" height="15" uuid="279a2f09-0c3e-4645-9f0c-3de455f3d8aa"/>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="79" y="19" width="79" height="15" uuid="df1b70a5-ff1a-48ad-a2b2-02b77f5248fc"/>
+				<text><![CDATA[Nama]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="158" y="19" width="79" height="15" uuid="164ee7ef-fbcb-4a43-9612-191186b5c08e"/>
+				<text><![CDATA[Nama Cicilan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="237" y="19" width="79" height="15" uuid="dd085f14-b8aa-425f-a888-9a4cbdd96e0f"/>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="316" y="19" width="79" height="15" uuid="6f4dfee4-91c0-44ea-a17e-58f881886890"/>
+				<text><![CDATA[Bnyk Cicilan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="395" y="19" width="79" height="15" uuid="d84d717c-9ebe-4345-8f5e-4d2e3adcc7ce"/>
+				<text><![CDATA[Cicilan Bulanan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="474" y="19" width="79" height="15" uuid="913975f2-7c57-44ea-a6dc-8387ca74bb2e"/>
+				<text><![CDATA[Ket]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1" uuid="f963b05a-b865-4d89-937e-1b23607e9367"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement style="Detail" x="0" y="0" width="39" height="15" uuid="1c63ee46-d053-45dd-adb5-345c872e9b44"/>
+				<textFieldExpression><![CDATA[$F{data_nasabah_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="79" y="0" width="79" height="15" uuid="0776ba48-fd77-40f1-bab1-9716d7ff81f7"/>
+				<textFieldExpression><![CDATA[$F{data_nasabah_nama_nasabah}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="158" y="0" width="79" height="15" uuid="29bda209-fe53-475c-a7c0-fe44f01ec243"/>
+				<textFieldExpression><![CDATA[$F{data_nasabah_nama_cicilan}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement style="Detail" x="237" y="0" width="79" height="15" uuid="b94eeed2-cf20-4974-891b-955db64e55a7"/>
+				<textFieldExpression><![CDATA[$F{data_nasabah_total_cicilan}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="316" y="0" width="79" height="15" uuid="af8c5ecc-08fc-40e4-9728-a012ce3528bc"/>
+				<textFieldExpression><![CDATA[$F{data_nasabah_banyak_cicilan}]]></textFieldExpression>
+			</textField>
+			<textField pattern=" #,##0">
+				<reportElement style="Detail" x="395" y="0" width="79" height="15" uuid="2016afd6-a6bd-4af9-a7d5-c9fccef962de"/>
+				<textFieldExpression><![CDATA[$F{data_nasabah_cicilan_perbulan}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="474" y="0" width="79" height="15" uuid="aeeab28f-f5e8-49f2-8a17-62c7a59cb3b8"/>
+				<textFieldExpression><![CDATA[$F{data_nasabah_ket}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="1c627f03-402e-47fd-beae-fa162de72969"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="Column header" x="433" y="0" width="80" height="20" uuid="3f8d9296-4918-4180-bc0a-259e6c8aae68"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="513" y="0" width="40" height="20" uuid="cc3db630-1ccb-4b26-8b61-56f6ba9eafee"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
